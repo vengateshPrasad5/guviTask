@@ -1,3 +1,5 @@
+package com.training.task1.java;
+
 import java.util.Scanner;
 
 public class CalculatePayable {

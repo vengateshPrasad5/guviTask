@@ -1,3 +1,5 @@
+package com.training.task1.java;
+
 public class GenerateNumber {
     public static void main(String[] args){
 
