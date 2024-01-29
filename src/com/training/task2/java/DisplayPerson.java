@@ -1,7 +1,5 @@
 package com.training.task2.java;
 
-import java.sql.SQLOutput;
-
 public class DisplayPerson extends Person {
     public static void main (String[] args){
         Person person  = new Person();
