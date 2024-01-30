@@ -6,6 +6,12 @@ public class Person {
     public String name = "Prasad";
     public int age =18;
 
+    public Person(String name,int age){
+        System.out.println("name before "+this.name);// Output : name before Prasad
+        System.out.println("age before "+this.age); // Output : age before 18
+        this.name =name;
+        this.age = age;
+    }
 //    getter
     public String getName() {
         return name;
