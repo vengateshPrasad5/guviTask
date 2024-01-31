@@ -10,4 +10,13 @@ public class ArrConstructor {
         this.price = price;
         this.quantity = quantity;
     }
+
+    @Override
+    public String toString() {
+        return "ArrConstructor{" +
+                "pid=" + pid +
+                ", price=" + price +
+                ", quantity=" + quantity +
+                '}';
+    }
 }

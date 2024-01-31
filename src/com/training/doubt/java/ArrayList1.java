@@ -3,6 +3,7 @@ package com.training.doubt.java;
 import java.util.*;
 
 public class ArrayList1 {
+
     public static void main(String[] args) {
 //        ArrConstructor[] arrProduct = new ArrConstructor[5];
         Scanner obj = new Scanner(System.in);
@@ -33,7 +34,7 @@ public class ArrayList1 {
             arrList.add(new ArrConstructor(productID, rate, quantity));
         }
 
-        System.out.println(arrList.toString()); // Sample Output [com.training.doubt.java.ArrConstructor@5e9f23b4, com.training.doubt.java.ArrConstructor@4783da3f]
+        System.out.println(arrList); // Sample Output [com.training.doubt.java.ArrConstructor@5e9f23b4, com.training.doubt.java.ArrConstructor@4783da3f]
 
 //        To get the max value of map
         for (Map.Entry<Integer, Double> entry : map.entrySet()) {
