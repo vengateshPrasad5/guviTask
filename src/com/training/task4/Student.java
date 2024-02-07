@@ -1,4 +1,4 @@
-package com.training.task4.java;
+package com.training.task4;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

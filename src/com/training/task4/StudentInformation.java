@@ -1,4 +1,4 @@
-package com.training.task4.java;
+package com.training.task4;
 
 public class StudentInformation {
     public static void main(String[] args) {
