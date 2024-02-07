@@ -1,24 +1,48 @@
 package com.training.task3.java;
 
+
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 
 public class Library {
-    public static void main(String[] args) {
-        List<Book> books = new ArrayList<>();
-        books.add(new Book(123,"Wings Of Fire","Dr.A P J Abdul Kalam",true));
-        books.add(new Book(784,"Optimizing Java","James Gough",false));
-        books.add(new Book(247,"A Tale of Two Cities","Charles Dickens",true));
-        books.add(new Book(398,"Physiology of Money","Morgan Housel",true));
+       ArrayList<Book> books;
+    public Library(){
+        books = new ArrayList<>();
+    }
+    // Method to add book to the library
+    public void addBook(Book newBook){
+//        Add the book to the books array
+            books.add(newBook);
+        System.out.println("Book Added");
+    }
 
-//        to Print All Books
-        for (Book book:books){
-            System.out.println(book);
-        }
+//    Method to display all books in the library
+    public void displayBooks(){
+//        get all book in the library
+        System.out.println(books);
+    }
+//    Method to remove book using ID
+    public  void removeBook(long bookID){
+       for(int i = 0; i < books.size(); i++){
+           if(bookID == books.get(i).bookID){
+               books.remove(i);
+               System.out.println("Book ID with "+bookID+" removed");
+               return;
+           }
+       }
 
-//        get single book
-        System.out.println(books.get(3));
-
+    }
+//    Method to search book using ID
+    public void searchBook(long bookID ){
+       for(int i = 0; i < books.size(); i++){
+           if(bookID == books.get(i).bookID){
+               System.out.println( "{" +
+                       "bookID=" + books.get(i).bookID +
+                       ", title='" + books.get(i).title + '\'' +
+                       ", author='" +books.get(i).author + '\'' +
+                       ", isAvailable=" + books.get(i).isAvailable +
+                       '}');
+               return;
+           }
+       }
     }
 }
