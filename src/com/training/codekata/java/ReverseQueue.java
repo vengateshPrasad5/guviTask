@@ -1,6 +1,9 @@
 package com.training.codekata.java;
 
-import java.util.*;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+import java.util.Stack;
 
 
 public class ReverseQueue {
@@ -33,7 +36,7 @@ public class ReverseQueue {
 //            remove the element and store in the array
             int temp = queue.pop();
 //            push the element into the array
-//            as its the stack the last value stored removed first and added
+//            as it the stack the last value stored removed first and added
 //            first into the reverse stack
             reverse_queue.add(temp);
         }
