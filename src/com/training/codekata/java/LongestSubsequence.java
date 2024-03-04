@@ -1,8 +1,6 @@
 package com.training.codekata.java;
 
-import java.util.HashSet;
-import java.util.Scanner;
-import java.util.Set;
+import java.util.*;
 
 public class LongestSubsequence {
     public static void main(String[] args) {
@@ -23,12 +21,16 @@ public class LongestSubsequence {
      */
         Scanner obj = new Scanner(System.in);
         int n =  obj.nextInt();
+        obj.nextLine();
+        String str = obj.nextLine();
         Set<Integer> set = new HashSet<>();
         int count = 0;
         int longest = 1;
+//      String tokenizer used if the element has not the length of the size
+        StringTokenizer st1 = new StringTokenizer(str, " ");
 //      Adding number to the set based on the n
-        for (int i = 0; i < n; i++) {
-            set.add(obj.nextInt());
+        while (st1.hasMoreTokens()) {
+            set.add(Integer.parseInt(st1.nextToken()));
         }
 //     Get individual integer
         for (int elem :set) {
