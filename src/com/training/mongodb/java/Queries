@@ -1,0 +1,71 @@
+Q1 Solution
+
+Find all information on each product
+-- db.products.find()
+
+Q2 Solution
+
+Find product where product price is between 400 to 800
+-- db.products.find({$and:[{product_price: {$gte :400}}, {product_price :{$lt: 800}}]})
+
+Q3 Solution
+
+Find product where product price not between 400 to 600
+-- db.products.aggregate([{$match: {product_price: {$not: {$gte: 400,$lte: 600}}}}])
+
+Q4 solution
+
+List the four product which are greater than 500 in price
+-- db.products.find({product_price:{$gt : 500}}).limit(4)
+
+Q5 solution
+Find the product name and product material of each products
+
+-- db.products.find({},{product_price:1,product_material:1,_id:0})
+
+Q6 solution
+
+Find the product with a row id of 10
+-- db.products.findOne({id:'10'})
+
+Q7 solution
+
+Find only the product name and product material
+-- db.products.find({},{product_price:1,product_material:1,_id:0})
+
+Q8 Solution
+
+Find all products which contain the value of soft in product material
+--  db.products.aggregate({$match:{product_material:'Soft'}})
+
+Q9 Solution
+
+Find products which contain product color indigo  and product price 492.00
+-- db.products.find({$or:[{product_color:'indigo'},{product_price:492}]})
+
+Q10 Solution
+
+Delete the products which product price value are same
+
+-- db.products.aggregate([
+     {
+       $group: {
+         _id: "$product_price",
+         ids: { $addToSet: "$_id" },
+         count: { $sum: 1 }
+       }
+     },
+     {
+       $match: {
+         count: { $gt: 1 }
+       }
+     },
+     {
+       $project: {
+         ids: 1
+       }
+     },
+     {
+       $unwind:"$ids"
+     }
+   ]).forEach(function (doc) { db.products.deleteOne({_id:doc.ids})})
