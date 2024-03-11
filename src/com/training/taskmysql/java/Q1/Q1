@@ -1,0 +1,18 @@
+
+-- 1A query
+ SELECT ename, sal FROM employee where sal >= 2200;
+
+-- 1B query
+ SELECT * FROM employee WHERE comm IS NULL or comm = 0
+
+-- 1c query
+ SELECT ename, sal FROM employee WHERE sal NOT BETWEEN 2500 AND 4000
+
+-- 1d query
+ SELECT ename,job,sal FROM employee WHERE mgr IS NULL
+
+-- 1e query
+ SELECT ename FROM employee where ename like "__A%"
+
+-- 1f query
+ SELECT ename FROM employee where ename like "%T"
