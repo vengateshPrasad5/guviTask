@@ -1,0 +1,147 @@
+Zen Class Programme Database
+=============================
+
+<-------------------------Users----------------------------->
+
+Collection name : users
+Field Name:
+  user_id : ObjectID,
+  first_name : String,
+  last_name : String,
+  email : String,
+  age : Number,
+  education_level : String,
+  major : String,
+  enrollment_date : Date,
+  batch_no : Number
+
+<-------------------------CodeKata--------------------------------->
+
+Collection name : codekata
+Field Name:
+   codekata_id : ObjectID,
+   problem_name : String,
+   description : String,
+   difficulty_level : String,
+   solved_by:[
+                {
+                  student_id: ObjectID
+                  solved_date: Date and Time
+                 },
+                 {...}
+            ]
+
+<----------------------Attendance------------------>
+
+Collection name : attendance
+Field Name:
+     date : Date,
+     topic_id : ObjectID,
+     class_time : Time,
+     batch_no : Number,
+     attended_users : {
+                        student_id(ObjectID) ...
+                       } // Attended Student_id will be stored here
+
+<------------------------------Topic--------------------------------->
+
+Collection name : topic
+Field Name:
+       topic_id: ObjectID,
+       topic: String,
+       date: Date,
+       batch_no: Number,
+       instructor_name: String,
+       start_time: Time,
+       end_time: Time,
+       join_link: URL,
+       description: String,
+
+<-----------------------------------Task--------------------------------->
+
+Collection name : task
+Field Name:
+          "topic_id": ObjectID,
+          "assignment_id": ObjectID,
+          "assignment_title": String,
+          "assignment_description": String,
+          "assignment_url" :  URL ,
+          "due_date": Date,
+          "max_score": Number,
+          "submission_details": [
+                    "evaluation": {
+                                   "evaluated_by": {
+                                       "evaluator_id": ObjectId,
+                                       "evaluator_name": String
+                                   },
+                                   "evaluation_date": Date,
+                                   "evaluation_score": Number,
+                                   "comments": String
+                                   }
+                    "student_info": {
+                            "student_id": ObjectID,
+                            "submission_files": String,
+                            "score": Number,
+                            "comment": String,
+                            "submission_date": Date
+                          },{...}
+                ]
+
+Collection name : task_submission
+Field Name:
+            "assignment_id": ObjectId,
+            "assignment_title": String,
+            "submitted_by": {
+                "student_id": ObjectId,
+                "student_name": String
+            },
+            "submission_date": Date,
+            "submission_files": [String],  // Paths or URLs to submitted files
+            "evaluation": {
+                "evaluated_by": {
+                    "evaluator_id": ObjectId,
+                    "evaluator_name": String
+                },
+                "evaluation_date": Date,
+                "evaluation_score": Number,
+                "comments": String
+            }
+
+<------------------------------------Company_Drive--------------------------------->
+
+Collection name : company_drive
+Field Name:
+      company_id: ObjectId,
+      company_name: String,
+      date: Date,
+      location: String,
+      position: String,
+      ctc : Number,
+      contact_person:{
+                        name :String,
+                        email:String,
+                        phone:Number
+                      }
+
+Collection name : drive_attended
+Field Name :
+            company_id: ObjectId,
+            company_name: String,
+            student_id: ObjectId,
+            attended_date: Date,
+            status: String,
+<-------------------------------------------Mentor----------------------------------------->
+
+Collection name : mentor
+Field Name:
+        mentor_id: ObjectId,
+        mentor_name: String,
+        email: String,
+        phone_no: Number,
+        batch_no: Number,
+        students:[
+                    {
+                      student_id:ObjectID,
+                      student_name:String
+                    },{...}
+                 ]
