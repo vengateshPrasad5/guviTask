@@ -1,0 +1,117 @@
+1.Find all the topics and tasks which are thought in the month of October
+solution:
+var topics = db.topics.aggregate([
+        {$match: {
+                created_date: {
+                    $gte: "10/01/2020",
+                    $lt: "10/31/2020"
+                }  }  },
+        {$project: {
+                _id: 0,
+                topic:1
+            } } ]).toArray()
+var tasks = db.tasks.aggregate([
+        {$match: {
+                created_date: {
+                    $gte: "10/01/2020",
+                    $lt: "10/31/2020"
+                }  }  },
+        {$project: {
+                _id: 0,
+                assignment_name:1
+            } } ]).toArray()
+          var result = [...tasks,topics]
+printjson(result)
+
+
+2.Find all the company drives which appeared between 15 oct-2020 and 31-oct-2020
+solution:
+db.company_drive_attended.find({
+    "placement_drive_date": {$gte: "10/15/2020",$lte: "10/31/2020"
+    }
+},
+{_id: 1,company_name: 1,placement_drive_date: 1
+})
+
+3.Find all the company drives and students who are appeared for the placement.
+solution:
+db.company_drive_attended.aggregate([
+  {
+    $group: {
+      _id: "$company_name",
+      students: { $addToSet: "$students_attended.student_name" },
+    }
+  },
+  {
+    $project: {
+      _id: 1,
+      company_name:1,
+      students: 1
+    }
+  }
+])
+
+4. Find the number of problems solved by the user in codeKata
+solution:
+db.codekata.aggregate([
+  {
+    $unwind: "$solved_by"
+  },
+  {
+    $group: {
+      _id: "$solved_by.student_id",
+      problems_solved: { $addToSet: "$_id" }
+    }
+  },
+  {
+    $project: {
+      student_id: "$_id",
+      num_problems_solved: { $size: "$problems_solved" }
+    }
+  }
+])
+5. Find all the mentors with who has the mentee's count more than 15
+solution:
+db.mentors.aggregate([
+    {$match: {$expr:
+                {$gt: [{$size: "$students"},15]}
+        }
+    },
+    {$project: {_id: 1,mentor_name: 1,email: 1}
+    }
+])
+
+6. Find the number of users who are absent and task is not submitted  between 15 oct-2020 and 31-oct-2020
+
+solution:
+db.users.aggregate([
+    {
+        $lookup: {
+            from: "attendance",
+            localField: "_id",
+            foreignField: "student_id",
+            as: "attendance"
+        }
+    },
+    {
+        $lookup: {
+            from: "tasks",
+            localField: "tasks.topic_id",
+            foreignField: "topic_id",
+            as: "assignments"
+        }
+    },
+    {
+        $match: {
+            "attendance.status": "absent",
+            "assignments": { $eq: [] }
+        }
+    },
+    {
+        $project: {
+            _id: 1,
+            first_name: 1,
+            email: 1
+        }
+    }
+])
