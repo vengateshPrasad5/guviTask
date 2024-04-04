@@ -35,8 +35,6 @@ public class Q6 {
             }
 
         }
-        if(!stack.empty()) return false;
-        if(stack.empty()) return true;
-        return true;
+        return stack.empty(); // returns boolean true if stack empty or return false
     }
 }

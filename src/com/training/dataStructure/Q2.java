@@ -16,7 +16,7 @@ public class Q2 {
                 deque.push(elem);
                 smallestNumber = deque.getFirst();
             }
-            if(deque.size() >= 1 && elem < smallestNumber){
+            if(elem < smallestNumber){ // can use queue size greater than 1 or queue not empty as additional condition
                 deque.push(elem);
                 smallestNumber = elem;
                 System.out.print(smallestNumber);

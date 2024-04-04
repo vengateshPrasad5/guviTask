@@ -7,6 +7,10 @@ public class Q1 {
         Scanner obj =  new Scanner(System.in);
         int a = obj.nextInt();
         int b = obj.nextInt();
+        factorialDivisor(a, b);
+    }
+
+    private static void factorialDivisor(int a, int b) {
         int fact_a = 1;
         int fact_b = 1;
         for (int i = 1; i <= a; i++) {

@@ -9,10 +9,10 @@ public class Q5 {
         for (int i = 1; i <= num; i++) {
           String result  = decimalToBinary(i);
 //          To provide the space after each result
-          if(num %2 == 0){
+          if(num % 2 == 0){
               System.out.print(result + " ");
           }
-          if(num %2 ==1){
+          if(num % 2 ==1){
               System.out.print(result);
                 if(i < num ){
                     System.out.print(" ");
