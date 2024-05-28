@@ -19,7 +19,6 @@ public class Q47 {
     private static void printAlternativeArray(int[] arr) {
         Arrays.sort(arr);
 
-
         int n = arr.length;
 
         int start = 0;
@@ -37,6 +36,5 @@ public class Q47 {
                 start++;
             }
         }
-//        System.out.println();
     }
 }
